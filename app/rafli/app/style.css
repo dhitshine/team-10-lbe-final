@@ -1,0 +1,329 @@
+/* style.css */
+
+/* --- Variabel Warna dari Palet yang Diberikan --- */
+:root {
+    /* Mode Terang (Light Mode) */
+    --bg-color: #E6E6E6;
+    --card-bg: #DFEBF6;
+    --text-main: #29353C;
+    --text-muted: #44576D;
+    --border-color: #AAC7D8;
+    --primary: #44576D;
+    --accent: #768A96;
+    --card-shadow: 0 8px 25px rgba(41, 53, 60, 0.08);
+}
+
+body.dark-mode {
+    /* Mode Gelap (Dark Mode) */
+    --bg-color: #29353C;
+    --card-bg: #44576D;
+    --text-main: #E6E6E6;
+    --text-muted: #DFEBF6;
+    --border-color: #768A96;
+    --primary: #AAC7D8;
+    --accent: #DFEBF6;
+    --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    padding-bottom: 40px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mt-3 {
+    margin-top: 20px;
+}
+
+/* --- Top Navigation --- */
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+.theme-btn {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 2px solid var(--border-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.theme-btn:hover {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Profile Header --- */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.profile-image img:hover {
+    transform: scale(1.05) rotate(2deg);
+    border-color: var(--primary);
+}
+
+.profile-info h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.profile-info .subtitle {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.contact-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pill:hover {
+    transform: translateY(-4px) scale(1.02);
+    background-color: var(--primary);
+    color: var(--bg-color);
+    border-color: var(--primary);
+}
+
+/* --- Bento Grid Layout --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+/* --- Cards --- */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Aksen garis halus pada kartu saat hover */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+/* --- Education Section --- */
+.edu-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.edu-icon {
+    font-size: 2rem;
+    background: var(--bg-color);
+    padding: 12px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.edu-item:hover .edu-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.edu-item h3 {
+    font-size: 1.15rem;
+    margin-bottom: 3px;
+    color: var(--text-main);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--bg-color);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Timeline (Experience) --- */
+.timeline-item {
+    margin-bottom: 25px;
+    padding-left: 20px;
+    border-left: 3px solid var(--primary);
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 11px;
+    height: 11px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    background-color: var(--primary);
+}
+
+.timeline-item h3 {
+    font-size: 1.15rem;
+    color: var(--text-main);
+}
+
+.timeline-item .date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* --- Skills Tags --- */
+.skills-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--bg-color);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+.achievements-list p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* --- Scroll Animation (JS classes) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding-top: 50px;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
