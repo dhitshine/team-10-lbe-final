@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dewa Fitrah — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="mark"><span class="dot" id="nav-dot"></span>fh.</div>
+    <div class="navlinks">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="net-canvas"></canvas>
+  <div class="wrap hero-grid">
+    <h1 class="headline">Hello, I'm<br>Dewa Fitrah.
+      <span class="cycle-wrap">I build things in <span class="cycle" id="cycle-word">AI</span>.</span>
+    </h1>
+    <p class="hero-sub">Informatics Engineering student interested in AI and networking.</p>
+  </div>
+  <div class="wrap">
+    <svg class="hero-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="4" x2="12" y2="20"></line>
+      <polyline points="6 14 12 20 18 14"></polyline>
+    </svg>
+  </div>
+</header>
+
+<section id="work" class="wrap" data-accent="violet">
+  <div class="eyebrow">Selected work</div>
+
+  <div class="work-row">
+    <div class="work-num">01</div>
+    <div>
+      <h3 class="work-title"><span class="chip" style="background:var(--violet)"></span>Network Traffic Visualizer</h3>
+      <p class="work-desc">A lightweight tool for visualizing packet flow across a local network in real time.</p>
+      <span class="work-tag" style="background:var(--violet)">Networking</span>
+    </div>
+  </div>
+
+  <div class="work-row">
+    <div class="work-num">02</div>
+    <div>
+      <h3 class="work-title"><span class="chip" style="background:var(--coral)"></span>Handwritten Digit Classifier</h3>
+      <p class="work-desc">A small neural network trained from scratch to recognize handwritten digits.</p>
+      <span class="work-tag" style="background:var(--coral)">AI / ML</span>
+    </div>
+  </div>
+
+  <div class="work-row">
+    <div class="work-num">03</div>
+    <div>
+      <h3 class="work-title"><span class="chip" style="background:var(--teal)"></span>Campus Wi-Fi Heatmap</h3>
+      <p class="work-desc">A mapping project charting signal strength across campus buildings.</p>
+      <span class="work-tag" style="background:var(--teal)">Networking</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap" data-accent="teal">
+  <div class="eyebrow">About</div>
+  <div class="about-grid">
+    <p>I'm an Informatics Engineering student splitting my attention between how machines learn from data and how they talk to each other across a network. I like problems that sit close to the metal — training a model, tracing a packet, or figuring out why two systems won't agree.</p>
+    <div class="facts">
+      <div>
+        <div class="fact-label">Main Software / Tools</div>
+        <div class="fact-value">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">C</span>
+          <span class="tool-chip">C++</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap" data-accent="coral">
+  <div class="eyebrow">Contact</div>
+  <div class="contact-grid">
+    <p class="contact-lede">Open to talk about AI, networks, or your next project.</p>
+    <div class="contact-info">
+      <div class="contact-item" data-magnetic>
+        <div class="label">Email</div>
+        <span class="value">dewa.fitrah@email.com</span>
+      </div>
+      <div class="contact-item">
+        <div class="label">Elsewhere</div>
+        <div class="social-row">
+          <span data-magnetic>GitHub</span>
+          <span data-magnetic>LinkedIn</span>
+          <span data-magnetic>Instagram</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Dewa Fitrah — 2026</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
