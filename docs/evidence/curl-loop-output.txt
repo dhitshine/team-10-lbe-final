@@ -1,0 +1,25 @@
+STATUS: OUTPUT TERSEDIA; TIMESTAMP DAN COMMAND ASAL TIDAK TERCATAT
+
+Sumber: docs/evidence/curl-loop.txt. Output di bawah ini menunjukkan respons dengan empat hostname berbeda pada waktu pengambilan yang tidak diketahui. Ini bukan bukti status backend health saat ini.
+
+window.APP_CONFIG = { hostname: "ben" };
+
+window.APP_CONFIG = { hostname: "rafli" };
+
+window.APP_CONFIG = { hostname: "rafli" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+Simpan hasil terminal baru beserta timestamp dan command yang digunakan setelah verifikasi terkini. Screenshot Azure backend pool semua healthy belum tersedia.
