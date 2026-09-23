@@ -2,38 +2,25 @@
 
 ## Dokumentasi
 
-Berikut adalah dokumentasi untuk menjalankan website ini secara local dengan menggunakan docker dan azure.
+Berikut adalah dokumentasi untuk menjalankan website ini secara local dengan menggunakan docker dan azure. Applikasi yang akan dijalankan adalah website portofolio yang dijalankan secara lokal di vm masing-masing.
 
 ### Persiapan Dockerfile
 
 > Pertama-tama persiapkan `Dockerfile` yang akan membungkus proyek website di direktori utama `portofolio-ncc`, isinya sebagai berikut.
 ```
-FROM node:20-alpine AS builder
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
 FROM nginx:alpine
 
 RUN rm -f /etc/nginx/conf.d/default.conf
-
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY src/ /usr/share/nginx/html/
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 8080
 
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 ```
 
 > Buat `entrypoint.sh` di direktori yang sama
@@ -90,17 +77,21 @@ http {
 }
 ```
 
->   Setelah itu, proyek siap di-build di perangkat local masing-masing dengan command berikut
+> Build docker image
 ```
-sudo docker run --name web-portofolio -p 8000:8080 -d portofolio-ncc
+docker build -t <nama-image> .
+```
+
+>   Setelah itu, proyek siap di-run di perangkat local masing-masing dengan command berikut
+```
+sudo docker run --name <nama-web> -p 8080:8080 -d -e VM_HOSTNAME=$(whoami) <nama-image>
 ```
 
 > Cek apakah docker sudah berhasil
-![berhasil](app/portofolio-ncc/dokumentasi/image-1.png)
 
 > Bungkus image docker dengan format `.tar`
 ```
-docker save portofolio-ncc -o portofolio-ncc.tar
+docker save <nama-image> -o <nama-file.tar>
 ```
 
 
@@ -110,37 +101,35 @@ docker save portofolio-ncc -o portofolio-ncc.tar
 
 > Untuk team10, login ke vm masing masing harus didahului dengan terhubung ke vm-radhit dengan command `sudo ssh -i ~/Downloads/lbe_team10 radhit@70.153.148.165`.
 
-> Setelah itu, baru bisa masuk ke vm saya sendiri yaitu dengan memasukkan `ssh ben@10.0.0.7` beserta password saya.
+> Setelah itu, baru bisa masuk ke vm masing masing yaitu dengan memasukkan `ssh <nama>@<private ip>` beserta password saya.
 
 > Memastikan docker terinstal dan berjalan.
 ```
 docker --version
 sudo systemctl status docker
 ```
-![docker berjalan](app/portofolio-ncc/dokumentasi/image.png)
 
 > Pindahkan image berformat `.tar` ke `vm-radhit` terlebih dahulu
 ```
-scp -i lbe_team10 portofolio-ncc.tar radhit@70.153.148.165
+scp -i lbe_team10 <nama-file.tar> radhit@70.153.148.165
 ```
 
 > Pindahkan lagi ke vm masing-masing di dalam resource group dengan username dan ip address masing-masing vm.
 ```
-scp portofolio-ncc.tar  ben@10.0.0.7:~/
+scp <nama-file> <username>@<private-ip>:~/
 ```
 **eksekusi command ini di vm-radhit**
 
 > Kembali ke vm masing-masing, lalu coba load docker image tadi.
 ```
-docker load -i portofolio-ncc.tar
+docker load -i <nama-file.tar>
 ```
 
 > Cek `docker image ls` untuk mengetahui apakah proses load berhasil.
-![image ls](app/portofolio-ncc/dokumentasi/image-2.png)
 
 > Jalankan websitenya dengan command berikut
 ```
-docker run -d --name portofolio-ncc -p 8000:8080 -e VM_HOSTNAME=$(whoami) portofolio-ncc:latest
+docker run -d --name <nama-file> -p 8080:8080 -e VM_HOSTNAME=$(whoami) <nama-image>:latest
 ```
 
 > Tes hasilnya dengan localhost sesuai port yang digunakan
@@ -148,3 +137,10 @@ docker run -d --name portofolio-ncc -p 8000:8080 -e VM_HOSTNAME=$(whoami) portof
 curl -s http://localhost:8080/
 ```
 
+### Akses Load Balancer
+
+Aplikasi portofolio ini dapat diakses secara publik melalui Azure Load Balancer. 
+
+**Load Balancer Public IP:** `70.153.107.214`
+
+> *Catatan: Akses IP tersebut di browser menggunakan port 8080.*

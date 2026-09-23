@@ -1,0 +1,20 @@
+window.APP_CONFIG = { hostname: "ben" };
+
+window.APP_CONFIG = { hostname: "rafli" };
+
+window.APP_CONFIG = { hostname: "rafli" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "radhit" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
+window.APP_CONFIG = { hostname: "dewa" };
+
